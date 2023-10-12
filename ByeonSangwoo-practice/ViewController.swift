@@ -47,7 +47,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginButtonTap(_ sender: Any) {
-        print("\(idText)\n\(passwordText)")
+        pushToResultVC()
+    }
+    
+    @IBAction func changeBackgroundColorButton(_ sender: Any) {
+        if self.changeBackgroundColorSwitch.isOn == true {
+            view.backgroundColor = UIColor(named: "customBlue")
+        } else {
+            view.backgroundColor = .systemBackground
+        }
+    }
         
 //        guard let ResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
         
