@@ -77,6 +77,7 @@ class ViewController: UIViewController {
         guard let resultVC = self.storyboard?.instantiateViewController(identifier: "ResultViewController") as? ResultViewController else {return}
         resultVC.email = idText
         resultVC.password = passwordText
+        resultVC.turtleLike = turtleLike
         
         resultVC.delegate = self
         resultVC.loginDataCompletion = { data in

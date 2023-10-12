@@ -8,26 +8,29 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var turtleLabel: UILabel!
     
-    var loginDataCompletion: (([String]) -> Void)? //스트링 타입의 배열을 매개변수로 전달 할거고, 리턴타입은 void다!
+    var loginDataCompletion: (([String]) -> Void)?
     
     var delegate: GetDataProtocol?
     
     var email: String = ""
     var password: String = ""
-
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var passwordLabel: UILabel!
-    
-    private func bindText() {
-        self.emailLabel.text = "email : \(email)"
-        self.passwordLabel.text = "password : \(password)"
-    }
+    var turtleLike: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         bindText()
-        // Do any additional setup after loading the view.
+    }
+    
+    private func bindText() {
+        self.emailLabel.text = "Email : \(email)"
+        self.passwordLabel.text = "Password : \(password)"
+        self.turtleLabel.text = "당신은 거북이를 \(turtleLike)만큼 좋아하시는 군요!!"
     }
     
     @IBAction func backButtonTap(_ sender: Any) {
