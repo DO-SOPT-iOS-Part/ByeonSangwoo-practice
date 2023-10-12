@@ -17,14 +17,20 @@ class ViewController: UIViewController {
     
     private var idText: String = ""
     private var passwordText: String = ""
-    
-    @IBOutlet weak var descriptionLabel: UILabel!
+    private var turtleLike: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setUp()
     }
     
+    func setUp() {
+        changeBackgroundColorSwitch.isOn = false
+        
+        turtleSliderValue.text = String(Int(turtleSlider.value))
+        turtleLike = String(Int(turtleSlider.value))
+    }
     
     @IBAction func idTextFieldDidEditing(_ sender: Any) {
         guard let textField = sender as? UITextField else {return}
