@@ -43,18 +43,8 @@ class ResultViewController: UIViewController {
         
         delegate?.getLoginData(email: email, password: password)
         
-        guard let loginDataCompletion else {return}
+        guard let loginDataCompletion else { return }
+        
         loginDataCompletion([email, password])
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
