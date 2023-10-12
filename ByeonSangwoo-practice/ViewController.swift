@@ -86,12 +86,12 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(resultVC, animated: true)
     }
         
-    func presentToResultVC() {
-        guard let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
-        resultVC.email = idText
-        resultVC.password = passwordText
-        self.present(resultVC, animated: true)
-    }
+//    func presentToResultVC() {
+//        guard let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
+//        resultVC.email = idText
+//        resultVC.password = passwordText
+//        self.present(resultVC, animated: true)
+//    }
     
 //    func pushToResultVC() {
 //        guard let ResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
