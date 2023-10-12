@@ -9,6 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var turtleImageView: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var changeBackgroundColorSwitch: UISwitch!
+    @IBOutlet weak var turtleSlider: UISlider!
+    @IBOutlet weak var turtleSliderValue: UILabel!
+    
     private var idText: String = ""
     private var passwordText: String = ""
     
