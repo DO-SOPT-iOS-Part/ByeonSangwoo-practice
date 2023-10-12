@@ -57,11 +57,20 @@ class ViewController: UIViewController {
             view.backgroundColor = .systemBackground
         }
     }
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let value = Int(sender.value)
         
-//        guard let ResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {return}
+        turtleSliderValue.text = String(value)
+        self.turtleLike = String(value)
         
-//        self.present(ResultViewController, animated: true)
-        pushToResultVC()
+        if sender.value > 70 {
+            turtleImageView.image = UIImage(named: "smileTurtle")
+        } else if sender.value < 30 {
+            turtleImageView.image = UIImage(named: "sadTurtle")
+        } else {
+            turtleImageView.image = UIImage(named: "turtle")
+        }
     }
     
     func pushToResultVC() {
