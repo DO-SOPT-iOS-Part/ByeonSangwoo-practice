@@ -48,30 +48,6 @@ class StackViewController: UIViewController {
         view.backgroundColor = .blue
         return view
     }()
-    
-    var whiteView1: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    var whiteView2: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    var whiteView3: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    var whiteView4: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,14 +63,31 @@ class StackViewController: UIViewController {
             self.view.addSubview($0)
         }
         
-        [yellowView, whiteView1, blackView, whiteView2].forEach {
+        [yellowView, blackView].forEach {
             view.translatesAutoresizingMaskIntoConstraints = false
             
             stackView1.addArrangedSubview($0)
+            
+            let whiteView: UIView = {
+                let view = UIView()
+                view.backgroundColor = .white
+                return view
+            }()
+            
+            stackView1.addArrangedSubview(whiteView)
+            
         }
         
-        [whiteView3, greenView, whiteView4, blueView].forEach {
+        [greenView, blueView].forEach {
             view.translatesAutoresizingMaskIntoConstraints = false
+            
+            let whiteView: UIView = {
+                let view = UIView()
+                view.backgroundColor = .white
+                return view
+            }()
+            
+            stackView2.addArrangedSubview(whiteView)
             
             stackView2.addArrangedSubview($0)
         }
