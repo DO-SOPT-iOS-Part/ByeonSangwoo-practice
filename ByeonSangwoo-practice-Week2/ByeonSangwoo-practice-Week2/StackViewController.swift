@@ -9,6 +9,9 @@ import UIKit
 
 class StackViewController: UIViewController {
     
+    private var scrollView = UIScrollView()
+    private var contentView = UIView()
+    
     private var stackView1: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -57,10 +60,39 @@ class StackViewController: UIViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
+        ])
+        
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+        contentViewHeight.priority = .defaultLow
+        contentViewHeight.isActive = true
+        
         [stackView1, stackView2].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             
-            self.view.addSubview($0)
+            NSLayoutConstraint.activate([
+                $0.heightAnchor.constraint(equalToConstant: 1500)
+            ])
+            
+            contentView.addSubview($0)
         }
         
         [yellowView, blackView].forEach {
@@ -93,15 +125,15 @@ class StackViewController: UIViewController {
         }
         
         NSLayoutConstraint.activate([
-            stackView1.topAnchor.constraint(equalTo: view.topAnchor),
-            stackView1.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView1.trailingAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView1.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView1.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView1.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2),
             
-            stackView2.topAnchor.constraint(equalTo: view.topAnchor),
-            stackView2.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            stackView2.leadingAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView2.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView2.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView2.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView2.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2),
         ])
     }
 }
